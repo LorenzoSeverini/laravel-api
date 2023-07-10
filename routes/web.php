@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController; //<---- Import del controller precedentemente creato!
-use App\Http\Controllers\Admin\PostController; // <---- Importare il controller da usare!!
+use App\Http\Controllers\Admin\ProjectController; // <---- Importare il controller da usare!!
 
 /* ... */
 
@@ -21,7 +21,7 @@ Route::middleware(['auth'])
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         // Admin Post CRUD
-        Route::resource('projects', PostController::class);
+        Route::resource('projects', ProjectController::class);
     });
 
 require __DIR__ . '/auth.php';
