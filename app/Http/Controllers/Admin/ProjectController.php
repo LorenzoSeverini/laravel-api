@@ -27,7 +27,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        // Create a new project
+        return view('admin.projects.create');
     }
 
     /**
@@ -38,7 +39,12 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        // Store a new project
+        $validated = $request->validated();
+        $newProject = new Project();
+        $newProject->fill($validated);
+        $newProject->save();
+        return redirect()->route('admin.projects.index')->with('status', 'Project created successfully!');
     }
 
     /**
@@ -49,7 +55,15 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        // Show a project
+        return view('admin.projects.show', compact('project'));
+    }
+
+    public function old_without_dependency_injection($id)
+    {
+        // Show a project
+        $project = Project::findOrFail($id);
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -60,7 +74,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        // Edit a project
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -72,7 +87,11 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        // Update a project
+        $validated = $request->validated();
+        $project->fill($validated);
+        $project->update();
+        return redirect()->route('admin.projects.index')->with('status', 'Project updated successfully!');
     }
 
     /**
@@ -83,6 +102,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        // Delete a project
+        $project->delete();
+        return redirect()->route('admin.projects.index')->with('status', 'Project deleted successfully!');
     }
 }
