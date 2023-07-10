@@ -24,8 +24,8 @@ class ProjectSeeder extends Seeder
             $project->description = $faker->sentence(50);
             $project->link = $faker->url();
             $project->image = $faker->imageUrl(640, 480, 'animals', true);
-            $project->published_at = $faker->dateTimeBetween('-1 year', 'now');
-            $project->updated_at = $faker->dateTimeBetween('-1 year', 'now');
+            $project->published_at = $faker->dateTimeBetween('now');
+            $project->updated_at = $faker->dateTimeBetween('now');
             $project->save();
         }
     }
