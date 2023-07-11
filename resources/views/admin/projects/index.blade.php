@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         @foreach($projects as $project)
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="col-xl-4 col-lg-6 col-md-12 mb-4">
                 <div class="card h-100">
                     <div class="card-header">
                         {{ $project->title }}
