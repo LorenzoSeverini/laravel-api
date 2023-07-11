@@ -3,25 +3,23 @@
 @section('content')
 <div class="container-fluid mt-4">
 	<div class="row justify-content-center">
-		<div class="col-md-8">
-			<div class="card">
-				<div class="card-header">{{ __('Dashboard') }}</div>
+		<div class="col">
+            {{-- Welcome to the admin dashboard  --}}
+            <h1>Welcome to the admin dashboard</h1>
 
-				<div class="card-body">
-					@if (session('status'))
-					<div class="alert alert-success" role="alert">
-						{{ session('status') }}
-					</div>
-					@endif
+            <p>Here you can find all your stuff</p>
 
-					{{ __('You are logged in!') }}
-                    <div class="">
-                        <p>Click here to see your projects</p>
-                        <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Projects</a>
-                    </div>
-				</div>
-			</div>
-		</div>
+            <p>Some usefull links</p>
+
+            <ul>
+                <li>
+                    <a href="{{ route('admin.projects.index') }}">Projects</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.projects.create') }}">Create new project</a>
+            </ul>
+
+        </div>
 	</div>
 </div>
 @endsection
