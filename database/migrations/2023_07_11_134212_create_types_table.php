@@ -14,11 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('types', function (Blueprint $table) {
-            $table->id();
-            // table for types of projects (e.g. "php", "Js", "html", "css" etc.)
+            $table->id()->unique();
             $table->string('name', 50)->nullable();
             $table->string('icon', 50)->nullable();
-
             $table->timestamps();
         });
     }
