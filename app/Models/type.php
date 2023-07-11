@@ -12,7 +12,7 @@ class type extends Model
 
     protected $fillable = [
         'name',
-        'icon'
+        'icon',
     ];
 
     public function projects()
