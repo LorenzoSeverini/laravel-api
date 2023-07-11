@@ -17,6 +17,10 @@
                 </li>
                 <li>
                     <a href="{{ route('admin.projects.create') }}">Create new project</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://github.com/">Go To Git Hub</a>
+                </li>
             </ul>
 
         </div>
