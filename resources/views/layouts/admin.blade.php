@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="dark">
 
 <head>
 	<meta charset="utf-8">
@@ -26,7 +26,7 @@
 
 		<div class="container-fluid vh-100">
 			<div class="row h-100">
-				<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+				<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse position-fixed overflow-hidden">
 					<div class="position-sticky pt-3">
 						<ul class="nav flex-column">
                             {{-- icon left-side --}}
@@ -56,13 +56,11 @@
 									@csrf
 								</form>
 							</li>
-
 						</ul>
-
 					</div>
 				</nav>
 
-				<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-y-auto">
 					@yield('content')
 				</main>
 			</div>
