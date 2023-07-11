@@ -23,7 +23,9 @@
                             <p><strong>Expert :</strong> {{ $project->excerpt }}</p>
                             <p><strong>Description :</strong> {{ $project->description }} </p>
                             <p><strong>Slug :</strong> {{ $project->slug }} </p>
-                            <strong>Link :</strong><a target="_blank" href="{{ $project->link}}"> {{ $project->link}} </a>
+                            <p><strong>Link :</strong><a target="_blank" href="{{ $project->link}}"> {{ $project->link}}</a></p>
+                            <p><strong>Type :</strong> {{ $project->type->name }} </p>
+                            <p><strong>Type Icon :</strong> {{ $project->type->icon }} </p>
                             <p><strong>Date of creation :</strong> {{ $project->created_at }} </p>
                             <p><strong>Update :</strong> {{ $project->updated_at }} </p>
                         </div>
