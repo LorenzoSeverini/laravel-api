@@ -20,9 +20,7 @@
                     <div class="card-body">
                         <img src="{{ $project->image }}" alt="image" class="img-top img-thumbnail">
                         <div class="card-tex py-3">
-                            <p><strong>Expert :</strong> {{ $project->excerpt }}</p>
                             <p><strong>Description :</strong> {{ $project->description }} </p>
-                            <p><strong>Slug :</strong> {{ $project->slug }} </p>
                             <p><strong>Link :</strong><a target="_blank" href="{{ $project->link}}"> {{ $project->link}}</a></p>
                             <p><strong>Type :</strong> {{ $project->type ? $project->type->name : 'type null' }} </p>
                             <p><strong>Type Icon :</strong> {{ $project->type->icon }} </p>

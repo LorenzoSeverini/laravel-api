@@ -44,11 +44,13 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         // Store a new project
-        $validated = $request->validated();
+        $data = $request->validated();
+
         $newProject = new Project();
-        $newProject->fill($validated);
+        $newProject->fill($data);
         $newProject->save();
-        return redirect()->route('admin.projects.index')->with('status', 'Project created successfully!');
+
+        return redirect()->route('admin.projects.show', $newProject->id)->with('status', 'Project created successfully!');
     }
 
     /**
@@ -67,7 +69,7 @@ class ProjectController extends Controller
     {
         // Show a project
         $project = Project::findOrFail($id);
-        return view('admin.projects.show', compact('project'));
+        return view('admin.projects.show', compact('projects'));
     }
 
     /**
@@ -79,7 +81,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         // Edit a project
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        $projects = Project::findOrFail($project->id);
+        return view('admin.projects.edit', compact('projects', 'types'));
     }
 
     /**

@@ -26,10 +26,8 @@ class UpdateProjectRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'url' => 'required|url',
-            'github' => 'required|url',
-            'image' => 'nullable|image',
-            'type_id' => 'required|exists:types,id',
+            'image' => 'nullable|url|max:1024',
+            'link' => 'nullable|url|max:1024',
         ];
     }
     /**
@@ -44,13 +42,6 @@ class UpdateProjectRequest extends FormRequest
             'title.min' => 'the title must be minimum 5 chart',
             'title.max' => 'the title must be maximum 255 chart',
             'description.required' => 'The description is required',
-            'url.required' => 'The url is required',
-            'url.url' => 'The url must be a valid url',
-            'github.required' => 'The github is required',
-            'github.url' => 'The github must be a valid url',
-            'image.image' => 'The image must be a valid image',
-            'type_id.required' => 'The type is required',
-            'type_id.exists' => 'The type must be a valid type',
         ];
     }
 }

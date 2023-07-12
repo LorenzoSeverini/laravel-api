@@ -19,10 +19,10 @@ class ProjectTypeSeeder extends Seeder
     {
         // table type seeder
         for ($i = 0; $i < 10; $i++) {
-            $type = new type();
-            $type->name = $faker->word();
-            $type->icon = $faker->word();
-            $type->save();
+            $project = new type();
+            $project->name = $faker->word();
+            $project->icon = $faker->word();
+            $project->save();
         }
     }
 }

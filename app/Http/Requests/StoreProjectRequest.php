@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProjectRequest extends FormRequest
@@ -25,11 +26,9 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'url' => 'required|url',
-            'github' => 'required|url',
-            'image' => 'required|image',
-            'type_id' => 'required|exists:types,id',
+            'description' => 'required|text|min:5|max:500|',
+            'image' => 'nullable|url|max:1024',
+            'link' => 'nullable|url|max:1024',
         ];
     }
 
@@ -45,14 +44,10 @@ class StoreProjectRequest extends FormRequest
             'title.min' => 'the title must be minimum 5 chart',
             'title.max' => 'the title must be maximum 255 chart',
             'description.required' => 'The description is required',
-            'url.required' => 'The url is required',
-            'url.url' => 'The url must be a valid url',
-            'github.required' => 'The github is required',
-            'github.url' => 'The github must be a valid url',
-            'image.required' => 'The image is required',
-            'image.image' => 'The image must be a valid image',
-            'type_id.required' => 'The type is required',
-            'type_id.exists' => 'The type must be a valid type',
+            'description.min' => 'the description must be minimum 5 chart',
+            'description.max' => 'the description must be maximum 500 chart',
+            'image.url' => 'the image must be a valid url',
+            'link.url' => 'the link must be a valid url',
         ];
     }
 }

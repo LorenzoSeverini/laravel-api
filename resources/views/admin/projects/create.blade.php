@@ -35,22 +35,6 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
-            {{-- slug --}}
-            <div class="mb-3">
-                <label for="slug" class="form-label">Slug</label>
-                <input type="text" value="{{ old('slug') }}" class="form-control" id="slug" name="slug">
-                @error('slug')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-            {{-- {{-- excerpt  --}}
-            <div class="mb-3">
-                <label for="excerpt" class="form-label">Excerpt</label>
-                <textarea class="form-control" id="excerpt" name="excerpt" cols="30" rows="5">{{ old('excerpt') }}</textarea>
-                @error('excerpt')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
             {{-- description --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
@@ -61,44 +45,44 @@
             </div>
             {{-- link git hub --}}
             <div class="mb-3">
-                <label for="link_github" class="form-label">Link Github</label>
+                <label for="link" class="form-label">Link Github</label>
                 <input type="text" value="{{ old('link_github') }}" class="form-control" id="link_github" name="link_github">
-                @error('link_github')
+                @error('link')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
             {{-- image --}}
             <div class="mb-3">
-                <label for="image_path" class="form-label">Image</label>
+                <label for="image" class="form-label">Image</label>
                 <input type="text" value="{{ old('image_path') }}" class="form-control" id="image_path" name="image_path">
-                @error('image_path')
+                @error('image')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
             {{-- type --}}
             <div class="mb-3">
                {{-- select for each type id  --}}
-                <label for="type_id" class="form-label">Type</label>
+                <label for="type_name" class="form-label">Type</label>
                 <select class="form-select" id="type_id" name="type_id">
                     <option selected disabled>Select a type</option>
                     @foreach ($types as $type)
                         <option value="{{ $type->id }}">{{ $type->name }}</option>
                     @endforeach
                 </select>
-                @error('type_id')
+                @error('type_name')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
             {{-- icon --}}
             <div class="mb-3">
-                <label for="type_id" class="form-label">Type Icon</label>
+                <label for="type_icon" class="form-label">Type Icon</label>
                 <select class="form-select" id="type_id" name="type_id">
                     <option selected disabled>Select a icon</option>
                     @foreach ($types as $type)
                         <option value="{{ $type->id }}">{{ $type->icon }}</option>
                     @endforeach
                 </select>
-                @error('type_id')
+                @error('type_icon')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
@@ -106,7 +90,7 @@
             <div class="mb-3">
                 <label for="date" class="form-label">Date</label>
                 <input type="date" value="{{ old('published_at') }}" class="form-control" id="date" name="date">
-                @error('date')
+                @error('published_at')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
