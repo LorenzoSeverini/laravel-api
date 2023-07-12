@@ -75,6 +75,33 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+            {{-- type --}}
+            <div class="mb-3">
+               {{-- select for each type id  --}}
+                <label for="type_id" class="form-label">Type</label>
+                <select class="form-select" id="type_id" name="type_id">
+                    <option selected disabled>Select a type</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
+                </select>
+                @error('type_id')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            {{-- icon --}}
+            <div class="mb-3">
+                <label for="type_id" class="form-label">Type Icon</label>
+                <select class="form-select" id="type_id" name="type_id">
+                    <option selected disabled>Select a icon</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->icon }}</option>
+                    @endforeach
+                </select>
+                @error('type_id')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
             {{-- date  --}}
             <div class="mb-3">
                 <label for="date" class="form-label">Date</label>
