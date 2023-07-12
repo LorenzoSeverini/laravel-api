@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Projects</h1>
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary my-3">Create</a>
+            <hr>
         </div>
     </div>
     <div class="row">
@@ -24,7 +24,7 @@
                             <p><strong>Description :</strong> {{ $project->description }} </p>
                             <p><strong>Slug :</strong> {{ $project->slug }} </p>
                             <p><strong>Link :</strong><a target="_blank" href="{{ $project->link}}"> {{ $project->link}}</a></p>
-                            <p><strong>Type :</strong> {{ $project->type->name }} </p>
+                            <p><strong>Type :</strong> {{ $project->type ? $project->type->name : 'type null' }} </p>
                             <p><strong>Type Icon :</strong> {{ $project->type->icon }} </p>
                             <p><strong>Date of creation :</strong> {{ $project->created_at }} </p>
                             <p><strong>Update :</strong> {{ $project->updated_at }} </p>
