@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Type;
+
+use function PHPSTORM_META\type;
 
 class ProjectController extends Controller
 {
@@ -16,7 +19,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all(); // Get all projects from the database
+        $projects = Project::all();
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -28,7 +31,8 @@ class ProjectController extends Controller
     public function create()
     {
         // Create a new project
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
