@@ -29,6 +29,7 @@ class StoreProjectRequest extends FormRequest
             'url' => 'required|url',
             'github' => 'required|url',
             'image' => 'required|image',
+            'type_id' => 'required|exists:types,id',
         ];
     }
 
@@ -50,6 +51,8 @@ class StoreProjectRequest extends FormRequest
             'github.url' => 'The github must be a valid url',
             'image.required' => 'The image is required',
             'image.image' => 'The image must be a valid image',
+            'type_id.required' => 'The type is required',
+            'type_id.exists' => 'The type must be a valid type',
         ];
     }
 }
