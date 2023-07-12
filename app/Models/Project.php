@@ -18,9 +18,9 @@ class Project extends Model
         'link',
         'image',
         'published_at',
-        'updated_at'
+        'updated_at',
+        'type_id',
     ];
-    // aggiungere nei model Type e Project i metodi per definire la relazione one to many
 
     public function type()
     {
