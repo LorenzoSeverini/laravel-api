@@ -35,12 +35,12 @@
                     <div class="card-footer">
                         {{-- link to show project id {{ $project->id }} --}}
                         <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-primary">Edit</a>
+                        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                        </form>
                     </div>
-                    <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger mt-2">Delete</button>
-                    </form>
                 </div>
             </div>
         </div>

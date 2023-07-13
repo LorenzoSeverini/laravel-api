@@ -31,7 +31,6 @@
                             <p><strong>Link :</strong><a target="_blank" href="{{ $project->link}}"> {{ $project->link}}</a></p>
                         </div>
                         <div class="card-footer">
-                            {{-- link to show project id {{ $project->id }} --}}
                             <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary">Show</a>
                         </div>
                     </div>

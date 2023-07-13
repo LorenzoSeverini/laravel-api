@@ -52,7 +52,7 @@ class ProjectController extends Controller
         $newProject->fill($data);
         $newProject->save();
 
-        // $newProject->technologies()->attach($data["technologies"]);
+        // $newProject->technologies()->attach($data['technologies']);
 
         return to_route('admin.projects.show', $newProject->id);
     }
@@ -103,7 +103,7 @@ class ProjectController extends Controller
         $data = $request->validated();
         $project->update($data);
 
-        // $project->technologies()->sync($data->technologies);
+        // $project->technologies()->sync($data['technologies']);
 
         return to_route('admin.projects.show', $project);
     }
