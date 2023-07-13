@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 use Faker\Generator as Faker;
 
 class ProjectSeeder extends Seeder
@@ -20,8 +21,10 @@ class ProjectSeeder extends Seeder
 
         $types = Type::all();
 
+        $technologies = Technology::all();
+
         for ($i = 0; $i < 10; $i++) {
-            $project = new project();
+            $project = new Project();
             $project->title = $faker->sentence(3);
             $project->description = $faker->sentence(50);
             $project->link = $faker->url();
@@ -29,7 +32,12 @@ class ProjectSeeder extends Seeder
             $project->published_at = $faker->dateTimeBetween('now');
             $project->updated_at = $faker->dateTimeBetween('now');
             $project->type_id = $types->random()->id;
+
             $project->save();
+
+            $project->technologies()->attach(
+                $technologies->random(rand(1, 3))->pluck('id')->toArray()
+            );
         }
     }
 }

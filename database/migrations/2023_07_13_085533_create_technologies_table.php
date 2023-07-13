@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('projects', function (Blueprint $table) {
-
-            // add the column
-            $table->foreignId('type_id')
-                ->constrained();
+        Schema::create('technologies', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -28,11 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('projects', function (Blueprint $table) {
-
-            // drop the column
-            $table->dropForeign('projects_type_id_foreign');
-            $table->dropColumn('type_id');
-        });
+        Schema::dropIfExists('technologies');
     }
 };

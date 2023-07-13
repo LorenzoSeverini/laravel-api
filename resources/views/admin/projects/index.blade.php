@@ -20,19 +20,13 @@
                     <div class="card-body">
                         <img src="{{ $project->image }}" alt="image" class="img-top img-thumbnail">
                         <div class="card-tex py-3">
-                            <p><strong>Description :</strong> {{ $project->description }} </p>
                             <p><strong>Link :</strong><a target="_blank" href="{{ $project->link}}"> {{ $project->link}}</a></p>
                             <p><strong>Type :</strong> {{ $project->type ? $project->type->name : 'type null' }} </p>
-                            <p><strong>Type Icon :</strong> {{ $project->type->icon }} </p>
-                            <p><strong>Date of creation :</strong> {{ $project->created_at }} </p>
-                            <p><strong>Update :</strong> {{ $project->updated_at }} </p>
                         </div>
-                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-primary">Edit</a>
-                        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger mt-2">Delete</button>
-                        </form>
+                        <div class="card-footer">
+                            {{-- link to show project id {{ $project->id }} --}}
+                            <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary">Show</a>
+                        </div>
                     </div>
                 </div>
             </div>

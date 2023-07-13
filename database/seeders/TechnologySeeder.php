@@ -4,11 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\type;
+use App\Models\Technology;
 use Faker\Generator as Faker;
 
-
-class ProjectTypeSeeder extends Seeder
+class TechnologySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,12 +16,11 @@ class ProjectTypeSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // table type seeder
+        // table technology seeder
         for ($i = 0; $i < 10; $i++) {
-            $type = new type();
-            $type->name = $faker->word();
-            $type->icon = $faker->word();
-            $type->save();
+            $technology = new Technology();
+            $technology->name = $faker->word();
+            $technology->save();
         }
     }
 }
