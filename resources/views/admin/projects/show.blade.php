@@ -29,8 +29,8 @@
                                 {{ $technology->name }}{{ $loop->last ? '' : ', ' }}
                             @endforeach
                         </p>
-                        <p><strong>Date of creation :</strong> {{ $project->created_at }} </p>
-                        <p><strong>Update :</strong> {{ $project->updated_at }} </p>
+                        <p><strong>Date of creation:</strong> {{ $project->created_at->format('d/m/Y H:i') }}</p>
+                        <p><strong>Update:</strong> {{ $project->updated_at->format('d/m/Y H:i') }}</p>
                     </div>
                     <div class="card-footer">
                         {{-- link to show project id {{ $project->id }} --}}

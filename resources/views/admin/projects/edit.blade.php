@@ -32,7 +32,7 @@
                 {{-- title --}}
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" value="{{ old('title') }}" class="form-control" id="title" name="title">
+                    <input type="text" value="{{ old('title', $project->title) }}" class="form-control" id="title" name="title">
                     @error('title')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -40,7 +40,7 @@
                 {{-- description --}}
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" name="description" cols="30" rows="5">{{ old('description') }}</textarea>
+                    <textarea class="form-control" id="description" name="description" cols="30" rows="5">{{ old('description', $project->description) }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -48,7 +48,7 @@
                 {{-- link git hub --}}
                 <div class="mb-3">
                     <label for="link" class="form-label">Link Github</label>
-                    <input type="text" value="{{ old('link') }}" class="form-control" id="link" name="link">
+                    <input type="text" value="{{ old('link', $project->link) }}" class="form-control" id="link" name="link">
                     @error('link')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -56,7 +56,7 @@
                 {{-- image --}}
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="text" value="{{ old('image') }}" class="form-control" id="image" name="image">
+                    <input type="text" value="{{ old('image', $project->image) }}" class="form-control" id="image" name="image">
                     @error('image')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -97,14 +97,6 @@
                         <label for="tags{{$i}}" class="form-check-label">{{$technology->name}}</label>
                     </div>
                     @endforeach
-                </div>
-                {{-- date  --}}
-                <div class="mb-3">
-                    <label for="date" class="form-label">Date</label>
-                    <input type="date" value="{{ old('published_at') }}" class="form-control" id="date" name="published_at">
-                    @error('published_at')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
                 </div>
                 {{-- button to submit the form --}}
                 <button type="submit" class="btn btn-primary">Submit</button>
