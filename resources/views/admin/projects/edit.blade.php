@@ -48,16 +48,16 @@
                 {{-- link git hub --}}
                 <div class="mb-3">
                     <label for="link" class="form-label">Link Github</label>
-                    <input type="text" value="{{ old('link_github') }}" class="form-control" id="link_github" name="link_github">
-                    @error('link_github')
+                    <input type="text" value="{{ old('link') }}" class="form-control" id="link" name="link">
+                    @error('link')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 {{-- image --}}
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="text" value="{{ old('image_path') }}" class="form-control" id="image_path" name="image_path">
-                    @error('image_path')
+                    <input type="text" value="{{ old('image') }}" class="form-control" id="image" name="image">
+                    @error('image')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -88,15 +88,24 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+                {{-- technology --}}
+                <div class="mb-3 ">
+                    <h3>Choose Technologies</h3>
+                    @foreach ($technologies as $i => $technology)
+                    <div class="form-check">
+                        <input type="checkbox" value="{{$technology->id}}" name="tags[]" id="tags{{$i}}" class="form-check-input" >
+                        <label for="tags{{$i}}" class="form-check-label">{{$technology->name}}</label>
+                    </div>
+                    @endforeach
+                </div>
                 {{-- date  --}}
                 <div class="mb-3">
                     <label for="date" class="form-label">Date</label>
-                    <input type="date" value="{{ old('published_at') }}" class="form-control" id="date" name="date">
-                    @error('date')
+                    <input type="date" value="{{ old('published_at') }}" class="form-control" id="date" name="published_at">
+                    @error('published_at')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-
                 {{-- button to submit the form --}}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

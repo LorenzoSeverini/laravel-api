@@ -29,8 +29,9 @@ class StoreProjectRequest extends FormRequest
             'description' => 'required|string|max:500',
             'image' => 'required|url',
             'link' => 'required|url',
-            "type_id" => "nullable|exists:types,id",
-            "technologies" => "nullable|exists:technologies,id"
+            'published_at' => 'required|date',
+            "type_id" => "exists:types,id",
+            "technologies" => "exists:technologies,id"
         ];
     }
 
@@ -50,8 +51,6 @@ class StoreProjectRequest extends FormRequest
             'description.max' => 'the description must be maximum 500 chart',
             'image.url' => 'the image must be a valid url',
             'link.url' => 'the link must be a valid url',
-            'type_id.exists' => 'the type must be a valid id',
-            'technologies.exists' => 'the technologies must be a valid id',
         ];
     }
 }

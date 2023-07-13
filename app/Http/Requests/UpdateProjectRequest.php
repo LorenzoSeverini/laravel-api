@@ -25,11 +25,12 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
+            'description' => 'required|string|max:500',
             'image' => 'required|url',
             'link' => 'required|url',
-            "type_id" => "nullable|exists:types,id",
-            "technologies" => "nullable|exists:technologies,id"
+            'published_at' => 'required|date',
+            "type_id" => "exists:types,id",
+            "technologies" => "exists:technologies,id"
         ];
     }
     /**
@@ -45,11 +46,9 @@ class UpdateProjectRequest extends FormRequest
             'title.max' => 'the title must be maximum 255 chart',
             'description.required' => 'The description is required',
             'description.min' => 'the description must be minimum 5 chart',
-            'description.max' => 'the description must be maximum 255 chart',
+            'description.max' => 'the description must be maximum 500 chart',
             'image.url' => 'the image must be a valid url',
             'link.url' => 'the link must be a valid url',
-            'type_id.exists' => 'the type must be a valid type',
-            'technologies.exists' => 'the technologies must be a valid technologies'
         ];
     }
 }
