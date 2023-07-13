@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Type;
+use App\Models\Technology;
 
 use function PHPSTORM_META\type;
 
@@ -32,7 +33,8 @@ class ProjectController extends Controller
     {
         // Create a new project
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -50,7 +52,9 @@ class ProjectController extends Controller
         $newProject->fill($data);
         $newProject->save();
 
-        return redirect()->route('admin.projects.show', $newProject->id)->with('status', 'Project created successfully!');
+        $newProject->technologies()->attach($data['technologies']);
+
+        return redirect()->route('admin.projects.show', $newProject->id);
     }
 
     /**
@@ -68,8 +72,9 @@ class ProjectController extends Controller
     public function old_without_dependency_injection($id)
     {
         // Show a project
-        $project = Project::findOrFail($id);
-        return view('admin.projects.show', compact('projects'));
+        $types = Type::all();
+        $project = Project::find($id);
+        return view('admin.projects.show', compact('project', 'types'));
     }
 
     /**
@@ -80,10 +85,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        // Edit a project
         $types = Type::all();
-        $projects = Project::findOrFail($project->id);
-        return view('admin.projects.edit', compact('projects', 'types'));
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -96,10 +99,13 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         // Update a project
-        $validated = $request->validated();
-        $project->fill($validated);
+        $data = $request->validated();
+        $project->fill($data);
         $project->update();
-        return redirect()->route('admin.projects.index')->with('status', 'Project updated successfully!');
+
+        $project->technologies()->sync($data->technologies);
+
+        return to_route('admin.projects.index', $project);
     }
 
     /**
@@ -112,6 +118,6 @@ class ProjectController extends Controller
     {
         // Delete a project
         $project->delete();
-        return redirect()->route('admin.projects.index')->with('status', 'Project deleted successfully!');
+        return redirect()->route('admin.projects.index');
     }
 }
