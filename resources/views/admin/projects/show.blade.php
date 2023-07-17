@@ -31,6 +31,8 @@
                         </p>
                         <p><strong>Date of creation:</strong> {{ $project->created_at->format('d/m/Y H:i') }}</p>
                         <p><strong>Update:</strong> {{ $project->updated_at->format('d/m/Y H:i') }}</p>
+                        {{-- img upload show  --}}
+                        {{-- <img src="{{ asset('storage/' . ) }}" alt="image" class="img-top img-thumbnail"> --}}
                     </div>
                     <div class="card-footer">
                         {{-- link to show project id {{ $project->id }} --}}

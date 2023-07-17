@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Type;
 use App\Models\Technology;
 
@@ -48,11 +49,15 @@ class ProjectController extends Controller
         // Store a new project
         $data = $request->validated();
 
+        $img_path = storage::put('uploads', $data['image']);
+        $data['image'] = $img_path;
+
         $newProject = new Project();
         $newProject->fill($data);
-        $newProject->save();
 
-        // $newProject->technologies()->attach($data['technologies']);
+        $newProject->technologies()->attach($data['technologies']);
+
+        $newProject->save();
 
         return to_route('admin.projects.show', $newProject->id);
     }
@@ -99,11 +104,16 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        // Update a project
+
         $data = $request->validated();
+
+        $img_path = storage::put('uploads', $data['image']);
+        $data['image'] = $img_path;
+
+        // Update a project
         $project->update($data);
 
-        // $project->technologies()->sync($data['technologies']);
+        $project->technologies()->sync($data['technologies']);
 
         return to_route('admin.projects.show', $project);
     }

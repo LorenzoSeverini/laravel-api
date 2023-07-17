@@ -105,6 +105,20 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+                {{-- upload image --}}
+                <div class="mb-3">
+                    <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('POST')
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" value="{{ old('image') }}" class="form-control" id="image" name="image">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </form>
+                </div>
                 {{-- button to submit the form --}}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

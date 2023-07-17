@@ -19,6 +19,7 @@ class Project extends Model
         'published_at',
         'updated_at',
         'type_id',
+        'image',
     ];
 
     public function type()
